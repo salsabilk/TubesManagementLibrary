@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+    
+        <style>
+		body {
+			background-image: url('https://i.ebayimg.com/images/g/9AkAAOSwm0BfRdx9/s-l1600.jpg');
+                        background-repeat: no-repeat;
+			background-size: cover;
+			min-height: 100vh;
+			min-width: 100vh;
+			
+		}
+
+		.card {
+			background-color: rgba(172, 194, 233, 0.3);
+			width: 100%;
+			 padding-bottom: 50px; 
+			/* max-width: 600px; */
+			border-radius: 10px;
+			/* padding: 20px; */
+			 padding-top: 50px; 
+			 margin-top: 30px; 
+			display: flex;
+			flex-direction: column;
+		}
+                
+                .form-group {
+                    color: white;
+                }
+                h3{
+                    color: white;
+                }
+	</style>
+</head>
+
+<body>
+    <div class="container my-5">
+    <br>
+    <br>
+    <div class = "container">
+	<div class = "row">
+            <div class = "col-md-6 col-md-offset-3">
+                <h3>User Login Page</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="col-md-10">
+                        <!--<h1> User Login Page </h1>-->
+                            <form method="POST" action="/home">
+
+                                                <!-- error message -->
+                                                <div th:if="${param.error}">
+                                                        <div class="alert alert-danger">Invalid username or
+                                                                password.</div>
+                                                </div>
+
+                                                <div class = "form-group">
+                                                        <label for ="username"> Username </label> :
+                                                        <input type="text" class = "form-control" id ="username" name = "username"
+                                                        placeholder="Enter Email ID" autofocus="autofocus">
+                                                </div>
+
+                                                <div class="form-group">
+                                                        <label for="password">Password</label>: <input type="password"
+                                                                id="password" name="password" class="form-control"
+                                                                placeholder="Enter Password" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                        <div class="row">
+                                                                <div class="col-sm-6 col-sm-offset-3">
+                                                                        <input type="submit" name="login-submit" id="login-submit"
+                                                                                class="form-control btn btn-primary" value="Log In" />
+                                                                </div>
+                                                        </div>
+                                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>
+	<!-- create navigation bar ( header) -->
+<!--	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Registration and
+					Login Module</a>
+			</div>
+		</div>
+	</nav>-->
+
+<!--	<div class = "container">
+		<div class = "row">
+			<div class = "col-md-6 col-md-offset-3">
+				
+				<h1> User Login Page </h1>
+                                <form method="POST" action="/home">
+					
+					 error message 
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">Invalid username or
+							password.</div>
+					</div>
+					
+					<div class = "form-group">
+						<label for ="username"> Username </label> :
+						<input type="text" class = "form-control" id ="username" name = "username"
+						placeholder="Enter Email ID" autofocus="autofocus">
+					</div>
+					
+					<div class="form-group">
+						<label for="password">Password</label>: <input type="password"
+							id="password" name="password" class="form-control"
+							placeholder="Enter Password" />
+					</div>
+					
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+								<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-primary" value="Log In" />
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    <div th:insert="fragments/footer :: footer"></div>-->
+    
+<!--</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST" action="#">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>-->

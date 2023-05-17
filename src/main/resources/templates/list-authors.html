@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Daftar Penulis</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+        
+         <style>
+		body {
+			background-image: url('https://i.ebayimg.com/images/g/9AkAAOSwm0BfRdx9/s-l1600.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			min-height: 100vh;
+			min-width: 100vh;
+			
+		}
+
+		.card {
+			background-color: rgba(172, 194, 233, 0.3);
+			width: 100%;
+			/* padding-bottom: 50px; */
+			/* max-width: 600px; */
+			border-radius: 10px;
+			/* padding: 20px; */
+			/* padding-top: 50px; */
+			/* margin-top: 30px; */
+			display: flex;
+			flex-direction: column;
+		}
+                 .table {
+                    color: white;
+                }
+
+	</style>
+	
+</head>
+<body>
+	<div th:insert="fragments/header :: header"></div>
+	<div class="container my-2">
+		<div class="card">
+			<div class="card-body">
+				<div th:switch="${authors}" class="container my-5">
+					<div id="successMsg" th:if="${successMsg}" class="alert alert-success">
+                                            <span th:text="${successMsg}"></span>
+                                        </div>
+
+                                        <div th:if="${delSuccessMsg}" id="delSuccessMsg" class="alert alert-success">
+                                          <span th:text="${delSuccessMsg}"></span>
+                                        </div>
+
+                                        <div th:if="${upSuccessMsg}" id="upSuccessMsg" class="alert alert-success">
+                                          <span th:text="${upSuccessMsg}"></span>
+                                        </div>
+                                    
+                                        <p class="my-5">
+						<a href="/addAuthor" class="btn btn-primary"> 
+						<i class="fas fa-user-plus ml-2">  Tambah Penulis </i></a>
+					</p>
+					<div class="col-md-12">
+						<h2 th:case="null">No record found !!</h2>
+						<div th:case="*">
+							<table class="table table-striped table-responsive-md">
+								<thead>
+									<tr>
+										<th>Nama Penulis</th>
+										<th>Biografi</th>
+										<th>Edit</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="author : ${authors}">
+										<td th:text="${author.authorName}"></td>
+										<td th:text="${author.authorBiografi}"></td>
+										<td><a th:href="@{/updateAuthor/{id}(id=${author.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
+										<td><a th:href="@{/remove-author/{id}(id=${author.id})}" class="btn btn-danger" onclick="return confirm('Yakin untuk menghapus data ini?')"><i class="fas fa-user-times ml-2"></i></a></td>
+									</tr>
+                                                                        
+                                                                        <script>
+                                                                            function hideSuccessMsg() {
+                                                                                document.getElementById('successMsg').style.display = 'none';
+                                                                            }
+
+                                                                            setTimeout(hideSuccessMsg, 5000);
+                                                                        </script>
+                                                                                                                                                        
+                                                                        <script>
+                                                                            setTimeout(function() {
+                                                                                var delSuccessMsg = document.getElementById('delSuccessMsg');
+                                                                                delSuccessMsg.style.display = 'none';
+                                                                            }, 5000); 
+                                                                        </script>
+                                                                            
+                                                                        <script>
+                                                                            setTimeout(function() {
+                                                                                var upSuccessMsg = document.getElementById('upSuccessMsg');
+                                                                                upSuccessMsg.style.display = 'none';
+                                                                            }, 5000); 
+                                                                        </script>
+                                                                        
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:insert="fragments/footer :: footer"></div>
+</body>
+
+</html>
